@@ -7,14 +7,14 @@ using namespace std;
 namespace ariel
 {
 
-    const NumberWithUnits operator+(const NumberWithUnits &c1, const NumberWithUnits &c2)
+     NumberWithUnits operator+(const NumberWithUnits &c1, const NumberWithUnits &c2)
     {
         return NumberWithUnits{c1.number, c1.unit};
     }
 
     //////////////////////////-//////////////////////////////
 
-    const NumberWithUnits operator-(const NumberWithUnits &c1, const NumberWithUnits &c2)
+     NumberWithUnits operator-(const NumberWithUnits &c1, const NumberWithUnits &c2)
     {
         return NumberWithUnits{c1.number, c1.unit};
     }
@@ -46,11 +46,11 @@ namespace ariel
     }
 
     ////////////////////////////////////////*/////////////////////////
-    const NumberWithUnits operator*(const NumberWithUnits &c1, const double &c2)
+     NumberWithUnits operator*(const NumberWithUnits &c1, const double &c2)
     {
         return NumberWithUnits{c1.number, c1.unit};
     }
-    const NumberWithUnits operator*(const double &c2, const NumberWithUnits &c1)
+     NumberWithUnits operator*(const double &c2, const NumberWithUnits &c1)
     {
         return NumberWithUnits{c1.number, c1.unit};
     }
@@ -66,14 +66,15 @@ namespace ariel
 
     static istream &getAndCheckNextCharIs(istream &input, char expectedChar)
     {
-        char actualChar;
+         char  actualChar=' ';
         input >> actualChar;
-        if (!input)
+        if (!input){
             return input;
-
-        if (actualChar != expectedChar)
+        }
+        if (actualChar != expectedChar){
             // failbit is for format error
             input.setstate(ios::failbit);
+    }
         return input;
     }
 
@@ -90,7 +91,7 @@ namespace ariel
         //---------------------------------------------
         // Checks format, with rewind on failure.
         //---------------------------------------------
-        double new_re;
+        double new_re=0.0;
         string new_im;
 
         // remember place for rewinding

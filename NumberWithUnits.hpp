@@ -8,24 +8,38 @@ namespace ariel
     class NumberWithUnits
     {
     private:
-        double  number;
+        double number;
         string unit;
 
     public:
-        NumberWithUnits(double  n=0.0, string u=" ") : number(n), unit(u){};
+
+        NumberWithUnits(double n = 0.0, string u = " ") : number(n), unit(u){};
         static void read_units(ifstream &read);
+        
+         double getNumber() const
+        {
+            return number;
+        }
+
+        string getUint() const
+        {
+            return unit;
+        }
+        
+        
+        
         //////////////////////////+//////////////////////////////////
         NumberWithUnits &operator+=(const NumberWithUnits &other)
         {
 
             return *this;
         }
-        const NumberWithUnits operator+() const
+         NumberWithUnits operator+() const
         {
             return *this;
         }
 
-        friend const NumberWithUnits operator+(const NumberWithUnits &c1, const NumberWithUnits &c2);
+        friend  NumberWithUnits operator+(const NumberWithUnits &c1, const NumberWithUnits &c2);
 
         //////////////////////////-//////////////////////////////
         NumberWithUnits &operator-=(const NumberWithUnits &other)
@@ -33,11 +47,11 @@ namespace ariel
 
             return *this;
         }
-        const NumberWithUnits operator-() const
+         NumberWithUnits operator-() const
         {
             return *this;
         }
-        friend const NumberWithUnits operator-(const NumberWithUnits &c1, const NumberWithUnits &c2);
+        friend  NumberWithUnits operator-(const NumberWithUnits &c1, const NumberWithUnits &c2);
 
         ////////////////////////////Logical//////////////////////////////////////////
         friend bool operator==(const NumberWithUnits &c1, const NumberWithUnits &c2);
@@ -54,7 +68,7 @@ namespace ariel
         }
 
         // postfix increment:
-        const NumberWithUnits operator++(int dummy_flag_for_postfix_increment)
+         NumberWithUnits operator++(int dummy_flag_for_postfix_increment)
         {
             NumberWithUnits copy = *this;
             return copy;
@@ -65,19 +79,19 @@ namespace ariel
         }
 
         // postfix increment:
-        const NumberWithUnits operator--(int dummy_flag_for_postfix_increment)
+         NumberWithUnits operator--(int dummy_flag_for_postfix_increment)
         {
             NumberWithUnits copy = *this;
             return copy;
         }
 
         ////////////////////////////////////////*/////////////////////////
-        friend const NumberWithUnits operator*(const NumberWithUnits &c1, const double &c2);
-        friend const NumberWithUnits operator*(const double &c2, const NumberWithUnits &c1);
+        friend  NumberWithUnits operator*(const NumberWithUnits &c1, const double &c2);
+        friend  NumberWithUnits operator*(const double &c2, const NumberWithUnits &c1);
 
         //////////////////////////////////////////
         friend ostream &operator<<(ostream &os, const NumberWithUnits &c);
-        friend istream &operator>>(istream &is, NumberWithUnits &c);
+        friend istream &operator>>(istream &input, NumberWithUnits &c);
     };
 
 } // namespace ariel
